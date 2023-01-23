@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista Amministra Tori</h2>
+<h2>AREA AMMINISTRAZIONE</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -30,9 +30,9 @@
             ********
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Utente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_Utente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Utente })
+            @Html.ActionLink("Modifica", "Edit", new { id=item.ID_Utente }) |
+            @Html.ActionLink("Dettagli", "Details", new { id=item.ID_Utente }) |
+            @Html.ActionLink("Elimina", "Delete", new { id=item.ID_Utente })
         </td>
     </tr>
 }

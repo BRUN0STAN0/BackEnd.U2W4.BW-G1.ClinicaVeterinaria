@@ -4,34 +4,37 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista Tipologia Animali</h2>
+<div class="container">
+    <h2>LISTA TIPOLOGIA ANIMALI</h2>
 
-<p>
-    @Html.ActionLink("Visualizza la lista animali", "Index", "Animale")
-</p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Crea animale", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TipologiaAnimale }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_TipologiaAnimale }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TipologiaAnimale })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_TipologiaAnimale }) |
+                    @Html.ActionLink("Dettagli", "Details", new { id = item.ID_TipologiaAnimale }) |
+                    @Html.ActionLink("Elimina", "Delete", new { id = item.ID_TipologiaAnimale })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+    <p>
+        @Html.ActionLink("Visualizza la lista animali", "Index", "Animale")
+    </p>
+</div>

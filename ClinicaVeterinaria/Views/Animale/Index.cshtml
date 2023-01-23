@@ -4,99 +4,101 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista Animali</h2>
-
-<p>
-    @Html.ActionLink("Visualizza la lista tipologia animali", "Index", "TipologiaAnimale")
-</p>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="container">
+    <h2>LISTA ANIMALI</h2>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DataRegistrazione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipologiaAnimale.Nome)
-        </th>
+    <p>
+        @Html.ActionLink("Crea nuova anagrafica animale", "Create")
+    </p>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ColoreMantello)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.DataNascita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Microchip)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroMicrochip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NominativoProprietario)
-        </th>
-        @*
-        <th>
-            @Html.DisplayNameFor(model => model.Smarrito)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataInizioRicovero)
-        </th>*@
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataRegistrazione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipologiaAnimale.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColoreMantello)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.DataNascita)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Microchip)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroMicrochip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NominativoProprietario)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Smarrito)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Foto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInizioRicovero)
-            </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID_Animale }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID_Animale }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID_Animale })
-            </td>
-        </tr>
-    }
+            <th>
+                @Html.DisplayNameFor(model => model.DataRegistrazione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipologiaAnimale.Nome)
+            </th>
 
-</table>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ColoreMantello)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.DataNascita)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Microchip)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroMicrochip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NominativoProprietario)
+            </th>
+            @*
+                <th>
+                    @Html.DisplayNameFor(model => model.Smarrito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Foto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataInizioRicovero)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataRegistrazione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipologiaAnimale.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ColoreMantello)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DataNascita)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Microchip)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroMicrochip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NominativoProprietario)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Smarrito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataInizioRicovero)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Animale }) |
+                    @Html.ActionLink("Dettagli", "Details", new { id = item.ID_Animale }) |
+                    @Html.ActionLink("Elimina", "Delete", new { id = item.ID_Animale })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Visualizza la lista tipologia animali", "Index", "TipologiaAnimale")
+    </p>
+</div>
