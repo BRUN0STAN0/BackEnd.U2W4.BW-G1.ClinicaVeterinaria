@@ -19,27 +19,38 @@ namespace ClinicaVeterinaria.Models
         public int ID_Animale { get; set; }
 
         [Column(TypeName = "date")]
+
+        [Display(Name = "Data Registrazione")]
         public DateTime DataRegistrazione { get; set; }
 
         [Required]
         [StringLength(30)]
         public string Nome { get; set; }
 
+        [Display(Name = "Tipo")]
         public int ID_TipologiaAnimale { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name ="Colore")]
         public string ColoreMantello { get; set; }
 
         [Column(TypeName = "date")]
+
+        [Display(Name = "Data Nascita")]
         public DateTime? DataNascita { get; set; }
 
-        public bool? Microchip { get; set; }
+        [Display(Name = "Possiede il chip")]
+        public bool Microchip { get; set; }
 
         [StringLength(50)]
+
+        [Display(Name = "Nr. Chip")]
         public string NumeroMicrochip { get; set; }
 
         [StringLength(50)]
+
+        [Display(Name = "Proprietario")]
         public string NominativoProprietario { get; set; }
 
         public bool Smarrito { get; set; }
@@ -47,7 +58,10 @@ namespace ClinicaVeterinaria.Models
         public string Foto { get; set; }
 
         [Column(TypeName = "date")]
+
+        [Display(Name = "Data Ricovero")]
         public DateTime? DataInizioRicovero { get; set; }
+
 
         public virtual TipologiaAnimale TipologiaAnimale { get; set; }
 

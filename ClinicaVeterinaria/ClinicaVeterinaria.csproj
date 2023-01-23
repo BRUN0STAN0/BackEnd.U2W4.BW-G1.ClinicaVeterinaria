@@ -129,13 +129,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnimaleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipologiaAnimaleController.cs" />
+    <Compile Include="Controllers\UtenteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202301231026199_createdb-firstmigration.cs" />
     <Compile Include="Migrations\202301231026199_createdb-firstmigration.designer.cs">
       <DependentUpon>202301231026199_createdb-firstmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301231542051_microchip-bool-not-null.cs" />
+    <Compile Include="Migrations\202301231542051_microchip-bool-not-null.designer.cs">
+      <DependentUpon>202301231542051_microchip-bool-not-null.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
@@ -162,6 +169,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\medici-387052.png" />
+    <Content Include="Content\img\PETSpecialistTrasparent.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -193,6 +202,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -218,10 +228,25 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Utente\Create.cshtml" />
+    <Content Include="Views\Utente\Delete.cshtml" />
+    <Content Include="Views\Utente\Details.cshtml" />
+    <Content Include="Views\Utente\Edit.cshtml" />
+    <Content Include="Views\Utente\Index.cshtml" />
+    <Content Include="Views\Utente\Login.cshtml" />
+    <Content Include="Views\TipologiaAnimale\Create.cshtml" />
+    <Content Include="Views\TipologiaAnimale\Delete.cshtml" />
+    <Content Include="Views\TipologiaAnimale\Details.cshtml" />
+    <Content Include="Views\TipologiaAnimale\Edit.cshtml" />
+    <Content Include="Views\TipologiaAnimale\Index.cshtml" />
+    <Content Include="Views\Animale\Create.cshtml" />
+    <Content Include="Views\Animale\Delete.cshtml" />
+    <Content Include="Views\Animale\Details.cshtml" />
+    <Content Include="Views\Animale\Edit.cshtml" />
+    <Content Include="Views\Animale\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -231,6 +256,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202301231026199_createdb-firstmigration.resx">
       <DependentUpon>202301231026199_createdb-firstmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301231542051_microchip-bool-not-null.resx">
+      <DependentUpon>202301231542051_microchip-bool-not-null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

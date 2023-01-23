@@ -1,43 +1,139 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>@ViewBag.Title - PET Clinic</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Informazioni", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contatto", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bx-menu'></i>
+            <span class="logo_name">PET Clinic</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="~/Home/Index">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Home</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="~/Home/Index">Home</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-compass'></i>
+                        <span class="link_name">Ricerca</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Ricerca</a></li>
+                    <li><a href="~/Animale/CercaByChip">- Cerca animale</a></li>
+                    <li><a href="~/Animale/">- Ricoveri attivi</a></li>
+                </ul>
+            </li>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-plug'></i>
+                            <span class="link_name">Admin</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Admin</a></li>
+                        <li><a href="~/Animale/Index">- Gestione animali</a></li>
+                        <li><a href="~/Utente/Index">- Gestione dipendenti</a></li>
+                    </ul>
+                </li>
+            }
+            <li>
+                <div class="iocn-link">
+                    <a href="~/Home/About">
+                        <i class='bx bx-cog'></i>
+                        <span class="link_name">Crediti</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Crediti</a></li>
+                    <li><a href="~/Home/About">- Primario S. Ponzani</a></li>
+                    <li><a href="~/Home/About">- Dott. B. Stano</a></li>
+                    <li><a href="~/Home/About">- Veter. L. Senatore</a></li>
+                    <li><a href="~/Home/About">- Dott. N. Lerra</a></li>
+                    <li><a href="~/Home/About">- Chirurgo A. Pourbijan</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="profile-details">
+
+                    <div class="profile-content">
+                        <img width="50" src="~/Content/img/PETSpecialistTrasparent.png" />
+                    </div>
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="name-job">
+                            <div class="profile_name">@User.Identity.Name</div>
+                        </div>
+                        <a href="~/Utente/Logout"><i class='bx bx-log-out'></i></a>
+                    }
+                    else
+                    {
+                        <div class="name-job">
+                            <div class="profile_name">Area riservata</div>
+                        </div>
+                        <a href="~/Utente/Login">
+                            <i class='bx bx-log-in'></i>
+                        </a>
+                    }
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <section class="home-section">
+        <div class="m-5">@RenderBody()</div>
+        <footer class="m-5">
+            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+        </footer>
+    </section>
+
+
+
+
+
+    <script type="text/javascript">
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
 </body>
 </html>

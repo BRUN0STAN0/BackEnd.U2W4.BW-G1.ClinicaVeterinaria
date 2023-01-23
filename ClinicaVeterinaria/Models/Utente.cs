@@ -17,6 +17,7 @@ namespace ClinicaVeterinaria.Models
         public string Username { get; set; }
 
         [Required]
+        [Display(Name ="Password")]
         public string Psw { get; set; }
     }
 }

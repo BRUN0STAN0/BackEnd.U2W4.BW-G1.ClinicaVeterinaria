@@ -1,0 +1,35 @@
+﻿@model ClinicaVeterinaria.Models.Utente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Utente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Psw)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.Psw)
+            *****
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Utente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

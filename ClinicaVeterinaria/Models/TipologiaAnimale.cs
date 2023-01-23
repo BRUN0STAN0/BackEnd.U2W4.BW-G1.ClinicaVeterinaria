@@ -16,9 +16,12 @@ namespace ClinicaVeterinaria.Models
         }
 
         [Key]
+
+        [Display(Name = "Tipo")]
         public int ID_TipologiaAnimale { get; set; }
 
         [Required]
+        [Display(Name ="Tipo")]
         [StringLength(30)]
         public string Nome { get; set; }
 
