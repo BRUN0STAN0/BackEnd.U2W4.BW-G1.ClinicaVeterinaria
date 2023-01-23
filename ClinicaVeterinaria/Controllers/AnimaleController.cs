@@ -49,10 +49,22 @@ namespace ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_Animale,DataRegistrazione,Nome,ID_TipologiaAnimale,ColoreMantello,DataNascita,Microchip,NumeroMicrochip,NominativoProprietario,Smarrito,Foto,DataInizioRicovero")] Animale animale)
+        public ActionResult Create(Animale animale, HttpPostedFileBase Foto)
         {
             if (ModelState.IsValid)
             {
+                if (Foto == null)
+                {
+                    animale.Foto = null;
+                }
+                else
+                {
+
+                animale.Foto = Foto.FileName;
+                Foto.SaveAs(Server.MapPath("/Content/img/" + Foto.FileName));
+
+                }
+                animale.DataRegistrazione = DateTime.Now;
                 db.Animale.Add(animale);
                 db.SaveChanges();
                 return RedirectToAction("Index");

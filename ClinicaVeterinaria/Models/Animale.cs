@@ -21,6 +21,7 @@ namespace ClinicaVeterinaria.Models
         [Column(TypeName = "date")]
 
         [Display(Name = "Data Registrazione")]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
         public DateTime DataRegistrazione { get; set; }
 
         [Required]
