@@ -90,11 +90,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.DataInizioRicovero)
                     </td>*@
-                <td>
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Animale }) |
-                    @Html.ActionLink("Dettagli", "Details", new { id = item.ID_Animale }) |
-                    @Html.ActionLink("Elimina", "Delete", new { id = item.ID_Animale })
-                </td>
+            <td>
+                @Html.ActionLink("Visita", "CreateById", "Visita", new { id = item.ID_Animale }, null) |
+                @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Animale }) |
+                @Html.ActionLink("Dettagli", "Details", new { id = item.ID_Animale }) |
+                @Html.ActionLink("Elimina", "Delete", new { id = item.ID_Animale })
+            </td>
             </tr>
         }
 

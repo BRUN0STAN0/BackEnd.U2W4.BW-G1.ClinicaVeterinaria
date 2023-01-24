@@ -21,6 +21,12 @@ namespace ClinicaVeterinaria.Controllers
             return View(visita.ToList());
         }
 
+        public ActionResult PartialViewIndex(int id)
+        {
+            List<Visita> ListaVisite = db.Visita.Where(x => x.ID_Animale == id).OrderByDescending(x => x.Data).ToList();
+            return PartialView("_PartialViewIndex", ListaVisite);
+        }
+
         // GET: Visita/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,6 +65,26 @@ namespace ClinicaVeterinaria.Controllers
 
             ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome", visita.ID_Animale);
             return View(visita);
+        }
+
+        public ActionResult CreateById(int id)
+        {
+            ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateById(Visita visita, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                visita.ID_Animale = id;
+                db.Visita.Add(visita);
+                db.SaveChanges();
+                return RedirectToAction("Details/"+ id,"Animale");
+            }
+            ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome");
+            return View();
         }
 
         // GET: Visita/Edit/5

@@ -250,6 +250,8 @@
     <Content Include="Views\Visita\Details.cshtml" />
     <Content Include="Views\Visita\Edit.cshtml" />
     <Content Include="Views\Visita\Index.cshtml" />
+    <Content Include="Views\Visita\CreateById.cshtml" />
+    <Content Include="Views\Visita\_PartialViewIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

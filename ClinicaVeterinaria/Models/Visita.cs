@@ -13,6 +13,7 @@ namespace ClinicaVeterinaria.Models
         public int ID_Visita { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
 
         public string Descrizione { get; set; }
