@@ -1,31 +1,33 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<div class="d-flex h-100 text-center" style="min-height:80vh;">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div class="row col-md align-items-center">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+                <h3 class="col-md-4 text-danger fw-bold ps-md-5">PET Clinic</h3>
+                <div class="col-md-4">
+                    <img style="width:150px" src="~/Content/img/PETSpecialistTrasparent.png" />
+                </div>
+                <nav class="col-md-4 d-flex justify-content-center pe-md-5">
+                    <a class="nav-link fw-bold py-1 px-1 active text-dark" aria-current="page" href="~/Home/Index">Home</a>
+                    <a class="nav-link fw-bold py-1 px-1 text-dark" href="~/Home/About">Chi siamo</a>
+                    <a class="nav-link fw-bold py-1 px-1 text-dark" href="~/Home/Contattaci">Contattaci</a>
+                </nav>
+            </div>
+        </header>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <main class="px-3 my-5">
+            <h1>La clinica professionale per il tuo PET!</h1>
+            <p class="lead">La Clinica Veterinaria PET nasce dalla passione, dalla professionalità e dall’esperienza del Dr. S. Ponzani, Dr. B. Stano, Dr. A. Pourbijan, Dr. N.Lerra, Dr. L.Senatore, maturata negli anni dedicati alla prevenzione ed alla cura dei nostri pazienti.</p>
+            <p class="lead">
+                <a href="~/Home/About" class="btn btn-lg btn-light fw-bold border-white bg-white">Scopri di piu</a>
+            </p>
+        </main>
+
+        <footer class="mt-auto text-white-50">
+            <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">Team 1</a>.</p>
+        </footer>
     </div>
 </div>

@@ -80,6 +80,16 @@
             </li>
 
             <li>
+                <a href="~/Home/Contattaci">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="link_name">Contattaci</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="~/Home/Contattaci">Contattaci</a></li>
+                </ul>
+            </li>
+
+            <li>
                 <div class="profile-details">
 
                     <div class="profile-content">
@@ -134,6 +144,62 @@
         sidebarBtn.addEventListener("click", () => {
             sidebar.classList.toggle("close");
         });
+    </script>
+    <script type="text/javascript">
+        //hasMicrochip
+        let hasMicrochip;
+        if ($("#Microchip").is(":checked")) {
+            showMicrochip()
+        } else {
+            hideMicrochip();
+        }
+
+        $("#Microchip").click(function () {
+            if (hasMicrochip) {
+                hideMicrochip();
+            } else {
+                showMicrochip()
+            }
+        });
+
+        function hideMicrochip() {
+            $("#NumeroMicrochip").hide();
+            $(".numeroMicrochip").hide();
+            hasMicrochip = false;
+        }
+        function showMicrochip() {
+
+            $("#NumeroMicrochip").show();
+            $(".numeroMicrochip").show();
+            hasMicrochip = true;
+        }
+        //isLost
+        let isLost;
+        if ($("#Smarrito").is(":checked")) {
+            showSmarrito()
+        } else {
+            hideSmarrito();
+        }
+
+        $("#Smarrito").click(function () {
+            if (isLost) {
+                hideSmarrito();
+            } else {
+                showSmarrito()
+            }
+        });
+
+        function hideSmarrito() {
+            $(".smarrito-form").hide();
+            $(".proprietario-form").show();
+            isLost = false;
+        }
+        function showSmarrito() {
+            $(".smarrito-form").show();
+            $(".proprietario-form").hide();
+            isLost = true;
+        }
+
     </script>
 </body>
 </html>

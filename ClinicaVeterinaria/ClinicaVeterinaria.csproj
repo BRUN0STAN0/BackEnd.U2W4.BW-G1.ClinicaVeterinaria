@@ -133,6 +133,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipologiaAnimaleController.cs" />
     <Compile Include="Controllers\UtenteController.cs" />
+    <Compile Include="Controllers\VisitaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +245,11 @@
     <Content Include="Views\Animale\Details.cshtml" />
     <Content Include="Views\Animale\Edit.cshtml" />
     <Content Include="Views\Animale\Index.cshtml" />
+    <Content Include="Views\Visita\Create.cshtml" />
+    <Content Include="Views\Visita\Delete.cshtml" />
+    <Content Include="Views\Visita\Details.cshtml" />
+    <Content Include="Views\Visita\Edit.cshtml" />
+    <Content Include="Views\Visita\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,7 @@
 ﻿@model ClinicaVeterinaria.Models.Animale
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crea";
 }
 
 <div class="container">
@@ -107,7 +107,7 @@
             <div class="form-group smarrito-form">
                 @Html.LabelFor(model => model.DataInizioRicovero, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DataInizioRicovero, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.DataInizioRicovero, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                     @Html.ValidationMessageFor(model => model.DataInizioRicovero, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -125,34 +125,4 @@
         @Scripts.Render("~/bundles/jqueryval")
     }
 
-    <script type="text/javascript">
-        let hasMicrochip = false;
-        $("#NumeroMicrochip").hide();
-        $(".numeroMicrochip").hide();
-        $("#Microchip").click(function () {
-            if (hasMicrochip) {
-                $("#NumeroMicrochip").hide();
-                $(".numeroMicrochip").hide();
-                hasMicrochip = false;
-            } else {
-                $("#NumeroMicrochip").show();
-                $(".numeroMicrochip").show();
-                hasMicrochip = true;
-            }
-        });
 
-        let isLost = false;
-        $(".smarrito-form").hide();
-        $("#Smarrito").click(function () {
-            if (isLost) {
-                $(".smarrito-form").hide();
-                $(".proprietario-form").show();
-                isLost = false;
-            } else {
-                $(".smarrito-form").show();
-                $(".proprietario-form").hide();
-                isLost = true;
-            }
-        });
-
-    </script>

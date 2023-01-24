@@ -86,6 +86,8 @@ namespace ClinicaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
+            Animale AnimaleInDB = db.Animale.Find(id);
+            ViewBag.FotoNomeinDB = AnimaleInDB.Foto;
             ViewBag.ID_TipologiaAnimale = new SelectList(db.TipologiaAnimale, "ID_TipologiaAnimale", "Nome", animale.ID_TipologiaAnimale);
             return View(animale);
         }
@@ -95,11 +97,28 @@ namespace ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_Animale,DataRegistrazione,Nome,ID_TipologiaAnimale,ColoreMantello,DataNascita,Microchip,NumeroMicrochip,NominativoProprietario,Smarrito,Foto,DataInizioRicovero")] Animale animale)
+        public ActionResult Edit([Bind(Include = "ID_Animale, Nome ,ID_TipologiaAnimale,ColoreMantello,DataNascita,Microchip,NumeroMicrochip,NominativoProprietario,Smarrito,Foto,DataInizioRicovero")] Animale animale, HttpPostedFileBase Foto)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(animale).State = EntityState.Modified;
+                Animale AnimaleInDB = db.Animale.Find(animale.ID_Animale);
+                if (Foto != null)
+                {
+                    AnimaleInDB.Foto = Foto.FileName;
+                    Foto.SaveAs(Server.MapPath("/Content/img/" + Foto.FileName));
+                }
+
+                AnimaleInDB.Nome = animale.Nome;
+                AnimaleInDB.ColoreMantello = animale.ColoreMantello;
+                AnimaleInDB.DataNascita = animale.DataNascita;
+                AnimaleInDB.Microchip = animale.Microchip;
+                AnimaleInDB.NumeroMicrochip = animale.NumeroMicrochip;
+                AnimaleInDB.Smarrito = animale.Smarrito;
+                AnimaleInDB.DataInizioRicovero = animale.DataInizioRicovero;
+
+
+
+                db.Entry(AnimaleInDB).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -6,137 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using ClinicaVeterinaria.Models;
 
 namespace ClinicaVeterinaria.Controllers
 {
-    public class UtenteController : Controller
+    public class VisitaController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
-        [Authorize]
-        // GET: Utente
+
+        // GET: Visita
         public ActionResult Index()
         {
-            return View(db.Utente.ToList());
+            var visita = db.Visita.Include(v => v.Animale);
+            return View(visita.ToList());
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Login(Utente u)
-        {
-            if (ModelState.IsValid && db.Utente.Where(x=>x.Username == u.Username && x.Psw == u.Psw).Count() == 1)
-            {
-                FormsAuthentication.SetAuthCookie(u.Username, true);
-                return Redirect(FormsAuthentication.DefaultUrl);
-            } else
-            {
-                ViewBag.Error = "Username e password non coincidono.";
-                return View();
-            }
-        }
-
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return Redirect(FormsAuthentication.LoginUrl);
-        }
-
-        [Authorize]
-        // GET: Utente/Details/5
+        // GET: Visita/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Utente utente = db.Utente.Find(id);
-            if (utente == null)
+            Visita visita = db.Visita.Find(id);
+            if (visita == null)
             {
                 return HttpNotFound();
             }
-            return View(utente);
+            return View(visita);
         }
-        [Authorize]
-        // GET: Utente/Create
+
+        // GET: Visita/Create
         public ActionResult Create()
         {
+            ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome");
             return View();
         }
-        [Authorize]
-        // POST: Utente/Create
+
+        // POST: Visita/Create
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_Utente,Username,Psw")] Utente utente)
+        public ActionResult Create([Bind(Include = "ID_Visita,Data,Descrizione,ID_Animale")] Visita visita)
         {
             if (ModelState.IsValid)
             {
-                db.Utente.Add(utente);
+                db.Visita.Add(visita);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(utente);
+            ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome", visita.ID_Animale);
+            return View(visita);
         }
-        [Authorize]
-        // GET: Utente/Edit/5
+
+        // GET: Visita/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Utente utente = db.Utente.Find(id);
-            if (utente == null)
+            Visita visita = db.Visita.Find(id);
+            if (visita == null)
             {
                 return HttpNotFound();
             }
-            return View(utente);
+            ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome", visita.ID_Animale);
+            return View(visita);
         }
-        [Authorize]
-        // POST: Utente/Edit/5
+
+        // POST: Visita/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_Utente,Username,Psw")] Utente utente)
+        public ActionResult Edit([Bind(Include = "ID_Visita,Data,Descrizione,ID_Animale")] Visita visita)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(utente).State = EntityState.Modified;
+                db.Entry(visita).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(utente);
+            ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome", visita.ID_Animale);
+            return View(visita);
         }
-        [Authorize]
-        // GET: Utente/Delete/5
+
+        // GET: Visita/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Utente utente = db.Utente.Find(id);
-            if (utente == null)
+            Visita visita = db.Visita.Find(id);
+            if (visita == null)
             {
                 return HttpNotFound();
             }
-            return View(utente);
+            return View(visita);
         }
-        [Authorize]
-        // POST: Utente/Delete/5
+
+        // POST: Visita/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Utente utente = db.Utente.Find(id);
-            db.Utente.Remove(utente);
+            Visita visita = db.Visita.Find(id);
+            db.Visita.Remove(visita);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

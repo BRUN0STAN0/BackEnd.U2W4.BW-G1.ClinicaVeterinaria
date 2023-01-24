@@ -21,7 +21,7 @@ namespace ClinicaVeterinaria.Models
         [Column(TypeName = "date")]
 
         [Display(Name = "Data Registrazione")]
-        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime DataRegistrazione { get; set; }
 
         [Required]
@@ -39,6 +39,7 @@ namespace ClinicaVeterinaria.Models
         [Column(TypeName = "date")]
 
         [Display(Name = "Data Nascita")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataNascita { get; set; }
 
         [Display(Name = "Possiede il chip")]
@@ -61,6 +62,7 @@ namespace ClinicaVeterinaria.Models
         [Column(TypeName = "date")]
 
         [Display(Name = "Data Ricovero")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataInizioRicovero { get; set; }
 
 

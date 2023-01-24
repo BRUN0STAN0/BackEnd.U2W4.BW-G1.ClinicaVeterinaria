@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ClinicaVeterinaria.Models.Visita>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista Visite</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Animale.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Animale.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descrizione)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Visita }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Visita }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Visita })
+        </td>
+    </tr>
+}
+
+</table>

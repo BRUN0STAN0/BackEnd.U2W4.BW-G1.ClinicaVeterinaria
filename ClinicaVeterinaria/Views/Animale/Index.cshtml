@@ -1,18 +1,19 @@
 ﻿@model IEnumerable<ClinicaVeterinaria.Models.Animale>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista animali";
 }
 
-<div class="container">
     <h2>LISTA ANIMALI</h2>
 
-
-    <p>
-        @Html.ActionLink("Crea nuova anagrafica animale", "Create")
-    </p>
-
-
+    <div class="d-flex align-items-center gap-3">
+        <p>
+            @Html.ActionLink("Crea nuova anagrafica animale", "Create", null, new { @class = "btn", @style = "background-color: cornflowerblue; color:white;" })
+        </p>
+        <p>
+            @Html.ActionLink("> Tipologia animali", "Index", "TipologiaAnimale", null , new { @class = "btn fw-bold", @style = "background-color: #c8a2c8; color:white;" })
+        </p>
+    </div>
     <table class="table">
         <tr>
             <th>
@@ -98,7 +99,3 @@
         }
 
     </table>
-    <p>
-        @Html.ActionLink("Visualizza la lista tipologia animali", "Index", "TipologiaAnimale")
-    </p>
-</div>
