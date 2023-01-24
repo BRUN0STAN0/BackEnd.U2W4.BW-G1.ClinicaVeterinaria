@@ -1,0 +1,40 @@
+﻿@model ClinicaVeterinaria.Models.Animale
+
+@{
+    ViewBag.Title = "CercaByChip";
+}
+
+<h2>CERCA ANIMALE </h2>
+
+<input type="text" name="MicroChip" id="RicercaChip" class="form-control" />
+<input type="button" name="MicroChip" id="btnChip" class="btn mt-1" value="Cerca" style="background-color:cornflowerblue; color:white" />
+
+<div class="card" data-tilt data-tilt-scale="0.95" data-tilt-startY="40">
+  
+<p id="animale"></p>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#btnChip').click(function () {
+            let InputChip = $('#RicercaChip').val();
+
+            $.ajax({
+                url: 'CercaByChipInput',
+                method: 'GET',
+                data: { 'microchip': InputChip },
+                success: function (animale) {
+                    /*$.each(animale, function (index, item) {*/
+                    $('#animale').text(animale.Nome)  
+
+
+
+                    /*});*/
+                }
+            });
+        });
+    });
+
+</script>

@@ -22,6 +22,32 @@ namespace ClinicaVeterinaria.Controllers
             return View(animale.ToList());
         }
 
+        public ActionResult CercaByChip()
+        {
+            return View();
+        }
+
+        public JsonResult CercaByChipInput(string microchip)
+        {
+            Animale animale = db.Animale.Where(x => x.NumeroMicrochip== microchip && x.Smarrito == true).FirstOrDefault();
+            Animale an =  new Animale();
+
+            an.Nome = animale.Nome;
+            an.DataRegistrazione = animale.DataRegistrazione;
+            an.ColoreMantello = animale.ColoreMantello;
+            an.DataNascita = animale.DataNascita;
+            an.Foto= animale.Foto;
+            an.NominativoProprietario = animale.NominativoProprietario;
+            
+            an.NumeroMicrochip = animale.NumeroMicrochip;
+            an.DataInizioRicovero = animale.DataInizioRicovero;
+            an.Smarrito= animale.Smarrito;
+            an.Microchip = animale.Microchip;
+            
+            
+            return Json(an, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Animale/Details/5
         public ActionResult Details(int? id)
         {
