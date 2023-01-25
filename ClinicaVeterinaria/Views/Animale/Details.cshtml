@@ -4,107 +4,110 @@
     ViewBag.Title = "Dettagli";
 }
 
-<div class="container">
-    <h2>DETTAGLI SCHEDA ANIMALE</h2>
+    <div class="row">
+        <div class="col-md-6 justify-content-start">
+            <h2>DETTAGLI SCHEDA ANIMALE</h2>
 
-    <div>
+            <div>
 
-        
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.TipologiaAnimale.Nome)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.TipologiaAnimale.Nome)
-            </dd>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TipologiaAnimale.Nome)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DataRegistrazione)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TipologiaAnimale.Nome)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.DataRegistrazione)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DataRegistrazione)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Nome)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DataRegistrazione)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Nome)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ColoreMantello)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.ColoreMantello)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ColoreMantello)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DataNascita)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ColoreMantello)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.DataNascita)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DataNascita)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Microchip)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DataNascita)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Microchip)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Microchip)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.NumeroMicrochip)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Microchip)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.NumeroMicrochip)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NumeroMicrochip)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.NominativoProprietario)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NumeroMicrochip)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.NominativoProprietario)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NominativoProprietario)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Smarrito)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NominativoProprietario)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Smarrito)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Smarrito)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Foto)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Smarrito)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Foto)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Foto)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DataInizioRicovero)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Foto)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.DataInizioRicovero)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DataInizioRicovero)
+                    </dt>
 
-        </dl>
+                    <dd>
+                        @Html.DisplayFor(model => model.DataInizioRicovero)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Modifica", "Edit", new { id = Model.ID_Animale }) |
+                @Html.ActionLink("Ritorna alla lista", "Index")
+            </p>
+        </div>
+        <div class="col-md-6">
+            @{ Html.RenderAction("PartialViewIndex", "Visita");}
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Modifica", "Edit", new { id = Model.ID_Animale }) |
-        @Html.ActionLink("Ritorna alla lista", "Index")
-    </p>
-
-    @{ Html.RenderAction("PartialViewIndex","Visita");}
-</div>
