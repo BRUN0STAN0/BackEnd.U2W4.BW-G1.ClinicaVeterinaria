@@ -36,13 +36,10 @@
                             data: { 'tipologia': this.id },
                             success: function (animale) {
                                 if (animale == "ERROR") {
-
                                     $('#lista_animali').text("Nessun animale trovato in questa clinica")
                                 } else {
                                     $("." + idName[i]).remove();
                                     $.each(animale, function (index, val) {
-                                        
-                                       
                                         $('#lista_animali').append(
                                             "<div class='card " + idName[i] + "' style='width: 300px;'>" +
                                             "<p class='" + idName[i] + "'>" + val.Nome + "</p>" +
