@@ -3,34 +3,49 @@
 @{
     ViewBag.Title = "CercaByChip";
 }
+    <h2>CERCA ANIMALE </h2>
 
-<h2>CERCA ANIMALE </h2>
+    <input type="text" name="MicroChip" id="RicercaChip" class="form-control" />
+    <input type="button" name="MicroChip" id="btnChip" class="btn mt-1 w-100" value="Cerca" style="background-color:cornflowerblue; color:white" />
 
-<input type="text" name="MicroChip" id="RicercaChip" class="form-control" />
-<input type="button" name="MicroChip" id="btnChip" class="btn mt-1" value="Cerca" style="background-color:cornflowerblue; color:white" />
-<p id="animale">
-
-</p>
-
-
+    <div class="mt-3" style="width:300px;">
+        <div class="card w-100" data-tilt>
+            <div id="animale" class="d-flex flex-column align-items-center justify-content-center"></div>
+        </div>
+    </div>
 <script type="text/javascript">
     $(document).ready(function () {
 
+        
+        $('.card').hide();
         $('#btnChip').click(function () {
             let InputChip = $('#RicercaChip').val();
-
             $.ajax({
                 url: 'CercaByChipInput',
                 method: 'GET',
                 data: { 'microchip': InputChip },
                 success: function (animale) {
                     if (animale == "ERROR") {
-                        $('#animale').text("Nessun animale trovato in questa clinica")
+                        $('.card').show();
+                        $('#animale').text("");
+                        $('#animale').text("Nessun animale trovato in questa clinica con questo chip.")
                     } else {
-                        $('#animale').text(animale.Nome)  
+                        $('.card').show();
+                        $('#animale').text("");
+                        $('#animale').append(
+                            
+                            "<img style='width:240px' class='rounded-3' src='/Content/img/"+ animale.Foto +"' />" + "<br>" +
+                            "<p>" + animale.Nome + "<p>" + "<br>" +
+                            "<p>Nr: " + animale.NumeroMicrochip + "<p>" + "<br>" 
+
+                            
+                            /*"In clinica dal: " + animale.DataInizioRicovero.*/
+                            )
+
                     }
                 },
                 error: function (er) {
+                    $('.card').show();
                     $('#animale').text(er);
                 }
             });
