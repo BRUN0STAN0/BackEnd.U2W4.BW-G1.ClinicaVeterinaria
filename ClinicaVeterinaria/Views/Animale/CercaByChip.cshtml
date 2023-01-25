@@ -8,11 +8,9 @@
 
 <input type="text" name="MicroChip" id="RicercaChip" class="form-control" />
 <input type="button" name="MicroChip" id="btnChip" class="btn mt-1" value="Cerca" style="background-color:cornflowerblue; color:white" />
+<p id="animale">
 
-<div class="card" data-tilt data-tilt-scale="0.95" data-tilt-startY="40">
-  
-<p id="animale"></p>
-</div>
+</p>
 
 
 <script type="text/javascript">
@@ -26,12 +24,14 @@
                 method: 'GET',
                 data: { 'microchip': InputChip },
                 success: function (animale) {
-                    /*$.each(animale, function (index, item) {*/
-                    $('#animale').text(animale.Nome)  
-
-
-
-                    /*});*/
+                    if (animale == "ERROR") {
+                        $('#animale').text("Nessun animale trovato in questa clinica")
+                    } else {
+                        $('#animale').text(animale.Nome)  
+                    }
+                },
+                error: function (er) {
+                    $('#animale').text(er);
                 }
             });
         });

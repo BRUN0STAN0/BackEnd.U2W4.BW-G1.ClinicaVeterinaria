@@ -347,17 +347,3 @@ label {
     }
 
 }
-
-/* CARD */
-
-.card {
-    margin: auto;
-    padding: 2em;
-    border-radius: 1em;
-    border: 1px solid gray;
-    text-shadow: 0 0 1em black;
-    background: rgba(0,0,0,0.07);
-    transform: perspective(500px);
-    transform-style: preserve-3d;
-    max-width: 100px;
-}

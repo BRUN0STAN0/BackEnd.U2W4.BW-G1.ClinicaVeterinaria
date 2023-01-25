@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ClinicaVeterinaria.Models.TipologiaAnimale>
+
+@{
+    ViewBag.Title = "Ritrovati";
+}
+<h2>Ritrovati</h2>
+<div class="d-flex flex-wrap gap-4">
+    @foreach (var item in Model)
+    {
+
+        @Html.HiddenFor(x => item.ID_TipologiaAnimale);
+        <div class="form-check form-switch d-flex align-items-center gap-2">
+            <input class="form-check-input checkbox" type="checkbox" id="@item.Nome">
+            <label class="form-check-label" for="flexSwitchCheckChecked">@item.Nome</label>
+        </div>
+    }
+</div>
+
+
+<div id="lista_animali">
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        let idName = $('.checkbox').map(function () { return this.id; }).get();
+        for (let i = 0; i < idName.length; i++) {
+            $("#" + idName[i] + "").change(function () {
+                {
+                    if ($(this).is(':checked')) {
+                        $.ajax({
+                            url: 'AnimaliRitrovati',
+                            method: 'GET',
+                            data: { 'tipologia': this.id },
+                            success: function (animale) {
+                                if (animale == "ERROR") {
+                                    
+                                    $('#lista_animali').text("Nessun animale trovato in questa clinica")
+                                } else {
+                                    $.each(animale, function (index, val) {
+                                        $('#lista_animali').append("<p class='" + idName[i] + "'>" + val.Nome + "</p>");
+                                    })
+                                }
+                            }
+                        });
+                    } else {
+                        
+                        $("." + idName[i] + "").remove();
+                    }
+                }
+            });
+        }
+    });
+
+
+</script>
