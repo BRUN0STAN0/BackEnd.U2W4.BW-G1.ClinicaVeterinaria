@@ -77,44 +77,44 @@ namespace ClinicaVeterinaria.Controllers
         // POST: TipologiaAnimale/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_TipologiaAnimale,Nome")] TipologiaAnimale tipologiaAnimale)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(tipologiaAnimale).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(tipologiaAnimale);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "ID_TipologiaAnimale,Nome")] TipologiaAnimale tipologiaAnimale)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(tipologiaAnimale).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(tipologiaAnimale);
+        //}
 
         // GET: TipologiaAnimale/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TipologiaAnimale tipologiaAnimale = db.TipologiaAnimale.Find(id);
-            if (tipologiaAnimale == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tipologiaAnimale);
-        }
-
-        // POST: TipologiaAnimale/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
+            var ListaVisite = db.Visita.Where(x => x.Animale.ID_TipologiaAnimale == id);
+            db.Visita.RemoveRange(ListaVisite);
+            db.SaveChanges();
+            var ListaAnimali = db.Animale.Where(x => x.ID_TipologiaAnimale == id);
+            db.Animale.RemoveRange(ListaAnimali);
+            db.SaveChanges();
             TipologiaAnimale tipologiaAnimale = db.TipologiaAnimale.Find(id);
             db.TipologiaAnimale.Remove(tipologiaAnimale);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // POST: TipologiaAnimale/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    TipologiaAnimale tipologiaAnimale = db.TipologiaAnimale.Find(id);
+        //    db.TipologiaAnimale.Remove(tipologiaAnimale);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
