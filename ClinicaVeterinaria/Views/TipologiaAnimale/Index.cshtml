@@ -4,14 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<div class="container">
-    <h2>LISTA TIPOLOGIA ANIMALI</h2>
+    <h2>Tipologie animali</h2>
 
 
     <p>
-        @Html.ActionLink("Crea animale", "Create")
+
+        @Html.ActionLink("<", "Index", "Animale", null, new { @class = "btn btn-sm", style = "background-color:darkgrey; color:white;" })
+        @Html.ActionLink("Aggiungi tipologia animale", "Create", null, new { @class = "btn btn-sm", style = "background-color:#91c493; color:white;" })
     </p>
-    <table class="table">
+    <table class="table" style="max-width: 500px;">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -25,16 +26,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-                <td>
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_TipologiaAnimale }) |
-                    @Html.ActionLink("Dettagli", "Details", new { id = item.ID_TipologiaAnimale }) |
-                    @Html.ActionLink("Elimina", "Delete", new { id = item.ID_TipologiaAnimale })
+                <td class="d-flex justify-content-end gap-2">
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_TipologiaAnimale }, new { @class = "btn btn-sm", style = "background-color:cornflowerblue; color:white;" }) 
+                    @Html.ActionLink("X", "Delete", new { id = item.ID_TipologiaAnimale }, new { @class = "btn btn-sm", style = "background-color:gray; color:white;" })
                 </td>
             </tr>
         }
 
     </table>
     <p>
-        @Html.ActionLink("Visualizza la lista animali", "Index", "Animale")
+        
     </p>
-</div>

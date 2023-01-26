@@ -4,110 +4,80 @@
     ViewBag.Title = "Dettagli";
 }
 
-    <div class="row">
-        <div class="col-md-6 justify-content-start">
-            <h2>DETTAGLI SCHEDA ANIMALE</h2>
-
-            <div>
 
 
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.TipologiaAnimale.Nome)
-                    </dt>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        @{ if (Model.Foto != null)
+                            {
+                                <img src="~/Content/img/@Model.Foto" alt="avatar"
+                                     class="rounded-circle img-fluid" style="width: 150px;">
+                            }
+                            else
+                            {
 
-                    <dd>
-                        @Html.DisplayFor(model => model.TipologiaAnimale.Nome)
-                    </dd>
+                                <img src="~/Content/img/PET-final.png" alt="avatar"
+                                     class="rounded-circle img-fluid" style="width: 150px;">
+                            }
+                        }
+                        <h5 class="my-3">@Html.DisplayFor(model => model.Nome)</h5>
+                        <p class="text-muted mb-1">
+                            Nr microchip: @if (Model.NumeroMicrochip != null)
+                            {
+                                @Html.DisplayFor(model => model.NumeroMicrochip)
+                            }
+                            else
+                            {
+                                <span>Non presente</span>
+                            }
+                        </p>
+                        <p class="text-muted mb-4" >Data Nascita: @Html.DisplayFor(model => model.DataNascita)</p>
+                        <div class="d-flex justify-content-center mb-2 gap-2">
+                            @Html.ActionLink("<", "Index", new { id = Model.ID_Animale }, new { @class = "btn", style = "background-color:darkgray; color:white;" })
+                            @Html.ActionLink("Visita", "CreateById", "Visita", new { id = Model.ID_Animale }, new { @class = "btn", style = "background-color:#c8a2c8; color:white;" })
+                            @Html.ActionLink("Modifica", "Edit", new { id = Model.ID_Animale }, new { @class = "btn", style = "background-color:cornflowerblue; color:white;" })
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DataRegistrazione)
-                    </dt>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-github fa-lg">Registrazione:</i>
+                                <p class="mb-0"> @Html.DisplayFor(model => model.DataRegistrazione)</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-twitter fa-lg">Proprietario: </i>
+                                <p class="mb-0">@Html.DisplayFor(model => model.NominativoProprietario)</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-instagram fa-lg">Tipo:</i>
+                                <p class="mb-0"> @Html.DisplayFor(model => model.TipologiaAnimale.Nome)</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-facebook-f fa-lg">Smarrito?</i>
+                                <p class="mb-0">@if (Model.Smarrito != null) { <span>Si</span>
+                                }else {
+                                <span>No</span>}</p>
+                            </li>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.DataRegistrazione)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Nome)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Nome)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ColoreMantello)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ColoreMantello)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DataNascita)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.DataNascita)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Microchip)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Microchip)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.NumeroMicrochip)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.NumeroMicrochip)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.NominativoProprietario)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.NominativoProprietario)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Smarrito)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Smarrito)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Foto)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Foto)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DataInizioRicovero)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.DataInizioRicovero)
-                    </dd>
-
-                </dl>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-facebook-f fa-lg">Inizio Ricovero: </i>
+                                <p class="mb-0"> @Html.DisplayFor(model => model.DataInizioRicovero)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <p>
-                @Html.ActionLink("Modifica", "Edit", new { id = Model.ID_Animale }) |
-                @Html.ActionLink("Ritorna alla lista", "Index")
-            </p>
+            <div class="col-lg-8">
+                <div class="card mb-4" style="height: 775px; overflow: scroll; overflow-x: hidden;">
+                    @{ Html.RenderAction("PartialViewIndex", "Visita");}
+                    
+                </div>
+                
+            </div>
         </div>
-        <div class="col-md-6">
-            @{ Html.RenderAction("PartialViewIndex", "Visita");}
-        </div>
-    </div>
+

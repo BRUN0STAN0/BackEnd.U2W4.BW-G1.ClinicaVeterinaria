@@ -70,6 +70,8 @@ namespace ClinicaVeterinaria.Controllers
         public ActionResult CreateById(int id)
         {
             ViewBag.ID_Animale = new SelectList(db.Animale, "ID_Animale", "Nome");
+            ViewBag.NomeAnimale = db.Animale.Find(id).Nome;
+
             return View();
         }
 

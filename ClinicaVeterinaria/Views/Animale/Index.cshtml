@@ -3,15 +3,15 @@
 @{
     ViewBag.Title = "Lista animali";
 }
+<h2>Lista completa animali</h2>
+    <h4>Attualmente in clinica: @Model.Count()</h4>
 
-    <h2>LISTA ANIMALI</h2>
-
-    <div class="d-flex align-items-center gap-3">
+    <div class="d-flex align-items-center gap-3" style="color: green">
         <p>
-            @Html.ActionLink("Crea nuova anagrafica animale", "Create", null, new { @class = "btn", @style = "background-color: cornflowerblue; color:white;" })
+            @Html.ActionLink("Crea nuova anagrafica animale", "Create", null, new { @class = "btn", @style = "background-color:#91c493; color:white;" })
         </p>
         <p>
-            @Html.ActionLink("> Tipologia animali", "Index", "TipologiaAnimale", null , new { @class = "btn fw-bold", @style = "background-color: #c8a2c8; color:white;" })
+            @Html.ActionLink("Tipologie >", "Index", "TipologiaAnimale", null , new { @class = "btn fw-bold", @style = "background-color: darkgrey; color:white;" })
         </p>
     </div>
     <table class="table">
@@ -41,10 +41,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.NominativoProprietario)
             </th>
-            @*
+            
                 <th>
                     @Html.DisplayNameFor(model => model.Smarrito)
                 </th>
+            @*
                 <th>
                     @Html.DisplayNameFor(model => model.Foto)
                 </th>
@@ -81,9 +82,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.NominativoProprietario)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Smarrito)
+                <td>
+                        @Html.CheckBoxFor(modelItem => item.Smarrito, new { @class = "form-check-input", disabled = true })
                     </td>
+                @*
                     <td>
                         @Html.DisplayFor(modelItem => item.Foto)
                     </td>
@@ -91,10 +93,9 @@
                         @Html.DisplayFor(modelItem => item.DataInizioRicovero)
                     </td>*@
             <td>
-                @Html.ActionLink("Visita", "CreateById", "Visita", new { id = item.ID_Animale }, null) |
-                @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Animale }) |
-                @Html.ActionLink("Dettagli", "Details", new { id = item.ID_Animale }) |
-                @Html.ActionLink("Elimina", "Delete", new { id = item.ID_Animale })
+                @Html.ActionLink("Visita", "CreateById", "Visita", new { id = item.ID_Animale }, new { @class = "btn btn-sm", style = "background-color:#c8a2c8;; color:white;" }) 
+                @Html.ActionLink("Dettagli", "Details", new { id = item.ID_Animale }, new { @class = "btn btn-sm", style = "background-color:cornflowerblue; color:white;" }) 
+                @Html.ActionLink("X", "Delete", new { id = item.ID_Animale }, new { @class = "btn btn-sm", style="background-color:gray; color:white;" })
             </td>
             </tr>
         }

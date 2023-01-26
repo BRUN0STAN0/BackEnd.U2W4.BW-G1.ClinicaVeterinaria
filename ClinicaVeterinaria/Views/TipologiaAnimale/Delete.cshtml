@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    <h2>ELIMINA ANIMALE</h2>
+    <h2>Elimina animale</h2>
 
     <h3>Sei sicuro di voler eliminare questo animale?</h3>
     <div>
@@ -26,10 +26,11 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn w-100 mt-3" style="background-color: cornflowerblue; color: white;" />
-                @Html.ActionLink("RItorna alla lista animali", "Index")
-            </div>
+    <div class="form-actions no-color  mt-3">
+        @Html.ActionLink("<", "Index", null, new { @class = "btn ", style = "background-color:darkgrey; color:white; position:absolute;" })
+
+        <input type="submit" value="Elimina" class="btn w-25" style="background-color: cornflowerblue; color: white;" />
+    </div>
         }
     </div>
 </div>
