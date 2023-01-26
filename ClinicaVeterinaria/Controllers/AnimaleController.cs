@@ -101,6 +101,7 @@ namespace ClinicaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
+            TempData["IdAnimale"] = id;
             return View(animale);
         }
 

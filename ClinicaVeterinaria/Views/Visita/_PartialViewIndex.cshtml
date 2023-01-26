@@ -1,18 +1,52 @@
 ﻿@model IEnumerable<ClinicaVeterinaria.Models.Visita>
 
+<style>
+    .modal-backdrop {
+        position: inherit;
+    }
+    .modal-backdrop.show {
+        opacity:0;
+    }
+</style>
+
 <table class="table">
     <tr>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Data)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Descrizione)
         </th>
-        @*<th></th>*@
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            <button type="button" class="btn btn-sm" style="background-color: gray; color: white;" data-bs-toggle="modal" data-bs-target="@("#delete" + item.ID_Visita)">
+                X
+            </button>
+            <div class="modal fade position-absolute" style="z-index:0!important" id="@("delete" + item.ID_Visita)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog position-absolute" style="z-index:10!important">
+                    <div class="modal-content border border-2 border-danger rounded-2">
+                        <div class="modal-header">
+                            @*<h1 class="modal-title fs-5" id="deleteLabel">Conferma acquisto</h1>*@
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex align-items-center gap-2">
+                            Vuoi cancellare <span class="fw-bold text-truncate d-inline-block" style="max-width:100px">@item.Descrizione</span> dalla lista delle visite?                           
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                @Html.ActionLink("Sì", "Delete", new { id = item.ID_Visita }, new { @class = "btn btn-sm btn-outline-danger fw-bold" })
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary fw-bold" data-bs-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*@Html.ActionLink("X", "Delete", new { id = item.ID_Visita })*@
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Data)
         </td>

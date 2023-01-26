@@ -125,28 +125,24 @@ namespace ClinicaVeterinaria.Controllers
         // GET: Visita/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Visita visita = db.Visita.Find(id);
-            if (visita == null)
-            {
-                return HttpNotFound();
-            }
-            return View(visita);
+            db.Visita.Remove(visita);
+            int IdAnimale = Convert.ToInt32(TempData["IdAnimale"]);
+            db.SaveChanges();
+            return RedirectToAction("Details", "Animale", new { id = IdAnimale });
         }
 
         // POST: Visita/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Visita visita = db.Visita.Find(id);
-            db.Visita.Remove(visita);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Visita visita = db.Visita.Find(id);
+        //    db.Visita.Remove(visita);
+        //    int IdAnimale = Convert.ToInt32(TempData["IdAnimale"]);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Details", "Animale", new {IdAnimale});
+        //}
 
         protected override void Dispose(bool disposing)
         {
