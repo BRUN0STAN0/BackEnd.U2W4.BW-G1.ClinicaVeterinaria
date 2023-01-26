@@ -27,8 +27,33 @@
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td class="d-flex justify-content-end gap-2">
-                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_TipologiaAnimale }, new { @class = "btn btn-sm", style = "background-color:cornflowerblue; color:white;" }) 
-                    @Html.ActionLink("X", "Delete", new { id = item.ID_TipologiaAnimale }, new { @class = "btn btn-sm", style = "background-color:gray; color:white;" })
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_TipologiaAnimale }, new { @class = "btn btn-sm", style = "background-color:cornflowerblue; color:white;" })
+                    <button type="button" class="btn btn-sm" style="background-color: gray; color: white;" data-bs-toggle="modal" data-bs-target="@("#delete" + item.ID_TipologiaAnimale)">
+                        X
+                    </button>
+                    <div class="modal fade" id="@("delete" + item.ID_TipologiaAnimale)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content border border-2 border-danger rounded-2">
+                                <div class="modal-header">
+                                    @*<h1 class="modal-title fs-5" id="deleteLabel">Conferma acquisto</h1>*@
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Vuoi cancellare <span class="fw-bold">@item.Nome</span> dalla lista? <br /> <br />
+                                    <p>Eliminando questa tipologia, si cancelleranno: <br />
+                                    - Tutti gli animali di tipo @item.Nome <br />
+                                    - Tutte le visite dei relativi animali.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group">
+                                        @Html.ActionLink("Sì", "Delete", new { id = item.ID_TipologiaAnimale }, new { @class = "btn btn-sm btn-outline-danger fw-bold", onclick="return confirm('Sicuro sicuro sicurissimo?')" })
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary fw-bold" data-bs-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }
