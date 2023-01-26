@@ -1,17 +1,80 @@
 ﻿@{
     ViewBag.Title = "Contattaci";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="text-center">
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+</div>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<section class="my-5 border border-2 rounded-4 container justify-content-start p-5" style="max-width:900px;">
+    <div class="text-center d-flex justify-content-center my-2">
+        <img style="width:100px; opacity:.5;" src="~/Content/img/PETSpecialistTrasparent.png" />
+    </div>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mt-1">
+        
+        Hai qualche domanda? <br />Si prega di non esitare a contattarci direttamente.<br /> Il nostro team ti risponderà in
+        un paio d'ore per aiutarti.
+    </p>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="row my-3" >
+
+        <!--Grid column-->
+        <div class="col-md-12 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action=" " method="POST">
+
+                <!--Grid row-->
+                <div class="row ">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 my-3">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" placeholder="Il tuo nome"  class="form-control" style="min-width:100%!important">
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-md-6 my-3">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" placeholder="La tua email"  class="form-control" style="min-width:100%!important">
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <!--Grid row-->
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" placeholder="Oggetto" class="form-control" style="min-width:100%!important">
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+                <!--Grid row-->
+                <div class="row my-3">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" placeholder="Testo" class="form-control md-textarea"  style="min-width:100%!important"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+                <a class="btn  w-100" style="background-color:cornflowerblue; color: white;">INVIA</a>
+            </div>
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+
+    </div>
+
+</section>
