@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Modifica</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Utente</h4>
+        <h4>Dipendente</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID_Utente)
@@ -34,15 +34,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn w-100 mt-3" style="background-color: cornflowerblue; color: white;" />
+            <div class="col-md-offset-2 col-md-10  mt-3">
+
+                @Html.ActionLink("<", "Index", null, new { @class = "btn", style = "background-color:darkgrey; color:white; position:absolute;" })
+                <input type="submit" value="Salva" class="btn w-100" style="background-color: cornflowerblue; color: white;" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

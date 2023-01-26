@@ -16,11 +16,9 @@
     }
 </div>
 
-<div class="mt-3">
-    <div id="lista_animali" class="d-flex flex-wrap gap-1">
+    <div id="lista_animali" class=" mt-3 row align-items-start gap-1">
 
     </div>
-</div>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -41,8 +39,11 @@
                                     $("." + idName[i]).remove();
                                     $.each(animale, function (index, val) {
                                         $('#lista_animali').append(
-                                            "<div class='card " + idName[i] + "' style='width: 300px;'>" +
-                                            "<p class='" + idName[i] + "'>" + val.Nome + "</p>" +
+                                            "<div class='card text-center " + idName[i] + "' style='width: 300px;'>" +
+                                            "<div class=' " + idName[i] + "'>" +
+                                            (val.Foto != null ? "<img class='img-fluid rounded-3' style='width:250px; height:250px; object-fit:cover;' src='../Content/img/" + val.Foto + "'/>" : "<img class='img-fluid rounded-3' style='width:250px; height:250px; object-fit:cover;' src='../Content/img/no-image.png'/>") +                                         
+                                            '<span class="fs-5 " >' + val.Nome + '</span>' + "<br>" +
+                                                   "</div>" +
                                             "</div>" 
                                         );
                                     })

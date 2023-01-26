@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<ClinicaVeterinaria.Models.Utente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Area Amministrazione";
 }
 
-<h2>AREA AMMINISTRAZIONE</h2>
+<h2>Area amministrazione</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("<", "Index", "Animale", null, new { @class = "btn btn-sm", style = "background-color:darkgrey; color:white;" })
+    @Html.ActionLink("Nuovo dipendente", "Create", null, new { @class = "btn btn-sm", style = "background-color:#91c493; color:white;" })
 </p>
 <table class="table">
     <tr>
@@ -30,9 +31,8 @@
             ********
         </td>
         <td>
-            @Html.ActionLink("Modifica", "Edit", new { id=item.ID_Utente }) |
-            @Html.ActionLink("Dettagli", "Details", new { id=item.ID_Utente }) |
-            @Html.ActionLink("Elimina", "Delete", new { id=item.ID_Utente })
+            @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Utente }, new { @class = "btn btn-sm", style = "background-color:cornflowerblue; color:white;" })
+            @Html.ActionLink("X", "Delete", new { id = item.ID_Utente }, new { @class = "btn btn-sm", style = "background-color:gray; color:white;" })
         </td>
     </tr>
 }
