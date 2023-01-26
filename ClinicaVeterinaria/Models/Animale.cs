@@ -65,7 +65,6 @@ namespace ClinicaVeterinaria.Models
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataInizioRicovero { get; set; }
 
-
         public virtual TipologiaAnimale TipologiaAnimale { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

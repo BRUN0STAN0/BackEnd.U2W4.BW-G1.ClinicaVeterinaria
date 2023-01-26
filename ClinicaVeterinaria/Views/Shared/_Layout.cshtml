@@ -90,10 +90,9 @@
             </li>
 
             <li>
-                <div class="profile-details">
-
+                <div class="profile-details ">
                     <div class="profile-content">
-                        <img width="50" src="~/Content/img/PETSpecialistTrasparent.png" />
+                        <img class="bx bx-menu" width="50" src="~/Content/img/PETSpecialistTrasparent.png" />
                     </div>
 
 
@@ -139,9 +138,12 @@
             });
         }
         let sidebar = document.querySelector(".sidebar");
-        let sidebarBtn = document.querySelector(".bx-menu");
+        let sidebarBtn = document.getElementsByClassName("bx-menu");
         console.log(sidebarBtn);
-        sidebarBtn.addEventListener("click", () => {
+        sidebarBtn[0].addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+        sidebarBtn[1].addEventListener("click", () => {
             sidebar.classList.toggle("close");
         });
     </script>

@@ -22,11 +22,12 @@ namespace ClinicaVeterinaria.Controllers
             return View(animale.ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult CercaByChip()
         {
             return View();
         }
-
+        [AllowAnonymous]
         public JsonResult CercaByChipInput(string microchip)
         {
             Animale animale = db.Animale.Where(x => x.NumeroMicrochip== microchip && x.Smarrito == true).FirstOrDefault();
@@ -50,14 +51,14 @@ namespace ClinicaVeterinaria.Controllers
                 return Json("ERROR", JsonRequestBehavior.AllowGet);
             }
         }
-
+        [AllowAnonymous]
         public ActionResult Ritrovati()
         {
             List<TipologiaAnimale> ListaTipologia = db.TipologiaAnimale.ToList();
 
             return View(ListaTipologia);
         }
-
+        [AllowAnonymous]
         public JsonResult AnimaliRitrovati(string tipologia)
         {
             List<Animale> listaAnimaliDB = db.Animale.Where(x=> x.TipologiaAnimale.Nome == tipologia && x.Smarrito == true).ToList();

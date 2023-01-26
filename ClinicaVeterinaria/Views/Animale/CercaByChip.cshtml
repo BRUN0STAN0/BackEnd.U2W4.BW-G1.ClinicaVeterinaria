@@ -36,12 +36,7 @@
                     } else {
 
                         var date = new Date(parseInt(animale.DataInizioRicovero.substr(6)));
-                        //var date_yyyy = date.GetFullYear();
-                        //var date_mm = date.getMonth() + 1;
-                        //var date_dd = date.GetDate();
-
                         var today = new Date();
-
                         var operazione = today.getTime() - date.getTime();
                         var inClinicaDal = Math.floor(operazione / 86400000)
                         
@@ -49,15 +44,12 @@
                         $('.card').show();
                         $('#animale').text("");
                         $('#animale').append(
-
                             "<img style='width:240px' class='rounded-3' src='/Content/img/" + animale.Foto + "' />" + "<br>" +
                             "<p>" + animale.Nome + "<p>" + "<br>" +
                             "Nr microchip 🖲️ " + animale.NumeroMicrochip + "<br>" +
                             "In clinica da " + inClinicaDal + " giorni." + "<br>" +
                             "Dal: " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getUTCFullYear()
-                            
                             )
-
                     }
                 },
                 error: function (er) {
