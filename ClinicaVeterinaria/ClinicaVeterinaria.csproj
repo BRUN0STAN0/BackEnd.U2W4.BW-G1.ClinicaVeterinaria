@@ -145,9 +145,19 @@
     <Compile Include="Migrations\202301231542051_microchip-bool-not-null.designer.cs">
       <DependentUpon>202301231542051_microchip-bool-not-null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301270003072_RuoliDB.cs" />
+    <Compile Include="Migrations\202301270003072_RuoliDB.designer.cs">
+      <DependentUpon>202301270003072_RuoliDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301270112077_aggiornamento.cs" />
+    <Compile Include="Migrations\202301270112077_aggiornamento.designer.cs">
+      <DependentUpon>202301270112077_aggiornamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animale.cs" />
+    <Compile Include="Models\CustomRoles.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
+    <Compile Include="Models\Ruolo.cs" />
     <Compile Include="Models\TipologiaAnimale.cs" />
     <Compile Include="Models\Utente.cs" />
     <Compile Include="Models\Visita.cs" />
@@ -370,6 +380,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301231542051_microchip-bool-not-null.resx">
       <DependentUpon>202301231542051_microchip-bool-not-null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301270003072_RuoliDB.resx">
+      <DependentUpon>202301270003072_RuoliDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301270112077_aggiornamento.resx">
+      <DependentUpon>202301270112077_aggiornamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

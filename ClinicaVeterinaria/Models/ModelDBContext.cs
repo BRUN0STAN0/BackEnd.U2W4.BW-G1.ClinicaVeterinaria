@@ -16,6 +16,7 @@ namespace ClinicaVeterinaria.Models
         public virtual DbSet<TipologiaAnimale> TipologiaAnimale { get; set; }
         public virtual DbSet<Utente> Utente { get; set; }
         public virtual DbSet<Visita> Visita { get; set; }
+        public virtual DbSet<Ruolo> Ruolo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,6 +28,11 @@ namespace ClinicaVeterinaria.Models
             modelBuilder.Entity<TipologiaAnimale>()
                 .HasMany(e => e.Animale)
                 .WithRequired(e => e.TipologiaAnimale)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Ruolo>()
+                .HasMany(e => e.Utente)
+                .WithRequired(e => e.Ruolo)
                 .WillCascadeOnDelete(false);
         }
     }

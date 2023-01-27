@@ -19,5 +19,9 @@ namespace ClinicaVeterinaria.Models
         [Required]
         [Display(Name ="Password")]
         public string Psw { get; set; }
+
+        public int ID_Ruolo { get; set; }
+
+        public virtual Ruolo Ruolo { get; set; }
     }
 }

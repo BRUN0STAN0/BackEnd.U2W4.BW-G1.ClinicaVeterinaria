@@ -14,7 +14,7 @@ namespace ClinicaVeterinaria.Controllers
     public class UtenteController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
-        [Authorize]
+        [Authorize(Roles="Admin")]
         // GET: Utente
         public ActionResult Index()
         {
@@ -74,11 +74,12 @@ namespace ClinicaVeterinaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_Utente,Username,Psw")] Utente utente)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && db.Utente.Where(x => x.Username == utente.Username && utente.Psw == utente.Psw).Count() == 0)
             {
+                utente.ID_Ruolo = 2;
                 db.Utente.Add(utente);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Animale");
             }
 
             return View(utente);
