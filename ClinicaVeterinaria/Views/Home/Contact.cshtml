@@ -29,14 +29,14 @@
                     <!--Grid column-->
                     <div class="col-md-6 my-3">
                         <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" placeholder="Il tuo nome"  class="form-control" style="min-width:100%!important">
+                            <input type="text" id="name" name="name" placeholder="Il tuo nome" class="form-control" style="min-width:100%!important">
                         </div>
                     </div>
                     <!--Grid column-->
                     <!--Grid column-->
                     <div class="col-md-6 my-3">
                         <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" placeholder="La tua email"  class="form-control" style="min-width:100%!important">
+                            <input type="text" id="email" name="email" placeholder="La tua email" class="form-control" style="min-width:100%!important">
                         </div>
                     </div>
                     <!--Grid column-->
@@ -59,7 +59,7 @@
                     <div class="col-md-12">
 
                         <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" placeholder="Testo" class="form-control md-textarea"  style="min-width:100%!important"></textarea>
+                            <textarea type="text" id="message" name="message" rows="2" placeholder="Testo" class="form-control md-textarea" style="min-width:100%!important"></textarea>
                         </div>
 
                     </div>
@@ -69,7 +69,28 @@
             </form>
 
             <div class="text-center text-md-left">
-                <a class="btn  w-100" style="background-color:cornflowerblue; color: white;">INVIA</a>
+                <button type="button" class="btn w-100" style="background-color: gray; color: white;" data-bs-toggle="modal" data-bs-target="#INVIA">
+                    Invia
+                </button>
+            </div>
+            
+            <div class="modal fade" id="INVIA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content border border-2 border-danger rounded-2">
+                        <div class="modal-header">
+                            @*<h1 class="modal-title fs-5" id="deleteLabel">Conferma acquisto</h1>*@
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex justify-content-center align-items-center flex-column">
+                            <span class="fw-bold fs-5 text-danger">Errore 404</span><br /> 
+                            Indirizzo e-mail della clinica inesistente.<br /><br />
+                            <img style="opacity:.9" class="rounded-3 img-fluid" src="~/Content/img/errore404.jpg" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-outline-secondary fw-bold" data-bs-dismiss="modal">Chiudi</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="status"></div>
         </div>

@@ -13,13 +13,13 @@
                         @{ if (Model.Foto != null)
                             {
                                 <img src="~/Content/img/@Model.Foto" alt="avatar"
-                                     class="rounded-circle img-fluid" style="width: 150px;">
+                                     class="rounded-circle img-fluid" style="width: 150px; height:150px; object-fit:cover;">
                             }
                             else
                             {
 
                                 <img src="~/Content/img/PET-final.png" alt="avatar"
-                                     class="rounded-circle img-fluid" style="width: 150px;">
+                                     class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                             }
                         }
                         <h5 class="my-3">@Html.DisplayFor(model => model.Nome)</h5>

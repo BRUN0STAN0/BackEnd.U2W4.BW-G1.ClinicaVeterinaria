@@ -5,7 +5,7 @@
 }
 
 
-
+<div class="d-flex flex-column align-items-center justify-content-center">
 
     <h2>Cerca il tuo animale</h2>
     <p>Si prega di inserire il numero del microchip:</p>
@@ -17,6 +17,7 @@
             <div id="animale" class="d-flex flex-column align-items-center justify-content-center"></div>
         </div>
     </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -44,7 +45,8 @@
                         $('.card').show();
                         $('#animale').text("");
                         $('#animale').append(
-                            "<img style='width:240px' class='rounded-3' src='/Content/img/" + animale.Foto + "' />" + "<br>" +
+                            (animale.Foto != null ? "<img style='width:250px; height:250px; object-fit:cover;' class='rounded-3' src='/Content/img/" + animale.Foto + "' />" : "<img style='width:250px; height:250px; object-fit:cover;' class='rounded-3' src='/Content/img/no-image.png' />" )
+                             + "<br>" +
                             "<p>" + animale.Nome + "<p>" + "<br>" +
                             "Nr microchip 🖲️ " + animale.NumeroMicrochip + "<br>" +
                             "In clinica da " + inClinicaDal + " giorni." + "<br>" +
