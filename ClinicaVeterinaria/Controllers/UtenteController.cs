@@ -60,28 +60,31 @@ namespace ClinicaVeterinaria.Controllers
             }
             return View(utente);
         }
-        [Authorize]
+
         // GET: Utente/Create
         public ActionResult Create()
         {
+            ViewBag.ID_Ruolo = new SelectList(db.Ruolo, "ID_Ruolo", "Descrizione");
             return View();
         }
-        [Authorize]
+
         // POST: Utente/Create
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_Utente,Username,Psw")] Utente utente)
+        public ActionResult Create([Bind(Include = "Username,Psw,ID_Ruolo")] Utente utente)
         {
-            if (ModelState.IsValid && db.Utente.Where(x => x.Username == utente.Username && utente.Psw == utente.Psw).Count() == 0)
+            if (ModelState.IsValid && db.Utente.Where(x => x.Username == utente.Username).Count() == 0)
             {
-                utente.ID_Ruolo = 2;
+                //int IdRuolo = db.Ruolo.Where(x => x.Descrizione == "Client").FirstOrDefault().ID_Ruolo; 
+                //utente.ID_Ruolo = IdRuolo;
                 db.Utente.Add(utente);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Animale");
+                return RedirectToAction("Index");
             }
-
+            ViewBag.error = "L'username è già utilizzata da un altro utente.";
+            ViewBag.ID_Ruolo = new SelectList(db.Ruolo, "ID_Ruolo", "Descrizione");
             return View(utente);
         }
         [Authorize]
@@ -97,6 +100,7 @@ namespace ClinicaVeterinaria.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ID_Ruolo = new SelectList(db.Ruolo, "ID_Ruolo", "Descrizione", utente.ID_Ruolo);
             return View(utente);
         }
         [Authorize]
@@ -105,7 +109,7 @@ namespace ClinicaVeterinaria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_Utente,Username,Psw")] Utente utente)
+        public ActionResult Edit([Bind(Include = "ID_Utente,Username,Psw,ID_Ruolo")] Utente utente)
         {
             if (ModelState.IsValid)
             {
@@ -113,8 +117,10 @@ namespace ClinicaVeterinaria.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ID_Ruolo = new SelectList(db.Ruolo, "ID_Ruolo", "Descrizione", utente.ID_Ruolo);
             return View(utente);
         }
+
         [Authorize]
         // GET: Utente/Delete/5
         public ActionResult Delete(int? id)
@@ -130,6 +136,7 @@ namespace ClinicaVeterinaria.Controllers
             }
             return View(utente);
         }
+
         [Authorize]
         // POST: Utente/Delete/5
         [HttpPost, ActionName("Delete")]

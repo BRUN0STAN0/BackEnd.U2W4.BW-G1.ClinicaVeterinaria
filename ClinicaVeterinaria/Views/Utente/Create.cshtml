@@ -11,33 +11,43 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Psw, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Psw, new { htmlAttributes = new { @class = "form-control", type="password"} })
-                @Html.ValidationMessageFor(model => model.Psw, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 mt-3">
-
-                @Html.ActionLink("<", "Index", null, new { @class = "btn", style = "background-color:darkgrey; color:white; position:absolute;" })
-                <input type="submit" value="Aggiungi dipendente" class="btn btn-default w-100" style="background-color: #91c493; color:white;"/>
-            </div>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Psw, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Psw, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+            @Html.ValidationMessageFor(model => model.Psw, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ID_Ruolo, "Ruolo", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ID_Ruolo", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ID_Ruolo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 mt-3">
+
+            @Html.ActionLink("<", "Index", null, new { @class = "btn", style = "background-color:darkgrey; color:white; position:absolute;" })
+            <input type="submit" value="Aggiungi dipendente" class="btn btn-default w-100" style="background-color: #91c493; color:white;" />
+        </div>
+    </div>
+</div>
+
+<p class="text-danger mt-4">@ViewBag.error</p>
 }
 
 

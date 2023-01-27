@@ -365,6 +365,7 @@
     <Content Include="Views\Visita\_PartialViewIndex.cshtml" />
     <Content Include="Views\Animale\CercaByChip.cshtml" />
     <Content Include="Views\Animale\Ritrovati.cshtml" />
+    <Content Include="Views\Utente\EditByAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
