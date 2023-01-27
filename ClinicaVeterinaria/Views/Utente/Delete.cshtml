@@ -4,12 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Elimina utente </h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Sei sicuro di voler eliminare questo utente ?</h3>
 <div>
-    <h4>Utente</h4>
-    <hr />
+   
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Username)
@@ -24,17 +23,18 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Psw)
+            @Html.HiddenFor(model => model.Psw)
+            ********
         </dd>
-
+       
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("<", "Index", null, new { @class = "btn ", style = "background-color:darkgrey; color:white; position:absolute;" })
+            <input type="submit" value="Elimina" class="btn w-100" style="background-color: cornflowerblue; color: white;" /> 
         </div>
     }
 </div>

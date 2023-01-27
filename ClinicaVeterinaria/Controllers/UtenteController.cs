@@ -11,20 +11,25 @@ using ClinicaVeterinaria.Models;
 
 namespace ClinicaVeterinaria.Controllers
 {
+        [Authorize(Roles="Admin")]
     public class UtenteController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
-        [Authorize(Roles="Admin")]
+
+
         // GET: Utente
         public ActionResult Index()
         {
             return View(db.Utente.ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(Utente u)
         {
@@ -45,7 +50,7 @@ namespace ClinicaVeterinaria.Controllers
             return Redirect(FormsAuthentication.LoginUrl);
         }
 
-        [Authorize]
+        
         // GET: Utente/Details/5
         public ActionResult Details(int? id)
         {
@@ -61,6 +66,7 @@ namespace ClinicaVeterinaria.Controllers
             return View(utente);
         }
 
+     
         // GET: Utente/Create
         public ActionResult Create()
         {
@@ -87,7 +93,10 @@ namespace ClinicaVeterinaria.Controllers
             ViewBag.ID_Ruolo = new SelectList(db.Ruolo, "ID_Ruolo", "Descrizione");
             return View(utente);
         }
-        [Authorize]
+
+
+
+
         // GET: Utente/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -103,7 +112,8 @@ namespace ClinicaVeterinaria.Controllers
             ViewBag.ID_Ruolo = new SelectList(db.Ruolo, "ID_Ruolo", "Descrizione", utente.ID_Ruolo);
             return View(utente);
         }
-        [Authorize]
+
+
         // POST: Utente/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -121,7 +131,6 @@ namespace ClinicaVeterinaria.Controllers
             return View(utente);
         }
 
-        [Authorize]
         // GET: Utente/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -137,7 +146,6 @@ namespace ClinicaVeterinaria.Controllers
             return View(utente);
         }
 
-        [Authorize]
         // POST: Utente/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
